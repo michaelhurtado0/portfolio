@@ -188,8 +188,44 @@ nav a:hover {
     opacity: 0;
     transition: all 0.4s ease;
     z-index: 10;
+    padding: 20px;
     
     transform: translateY(10px);
+}
+
+
+
+.overlay span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* This makes the text itself center inside the pill */
+    text-align: center;
+    display: block; 
+    
+    /* The Pill Styling */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 12px 20px; 
+    border-radius: 50px;
+    
+    /* Ensures long text wraps nicely and stays centered */
+    max-width: 90%;
+    line-height: 1.2;
+    
+}
+
+/* This hides the pill if there is no text inside it */
+.overlay span:empty {
+    display: none;
+    border: none;
+}
+
+/* Also, ensure your overlay isn't creating a 'Ghost' pill */
+.overlay::after {
+    display: none !important; /* This removes the old border we tried earlier */
 }
 
 .image-box:hover .overlay {
