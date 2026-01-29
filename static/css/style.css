@@ -1,0 +1,253 @@
+/* 1. Global Dark Theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    /* This sets the font for the entire website */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Navigation Links */
+nav a, .nav-links a {
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+    opacity: 0.7; /* Fades slightly when you hover */
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Spans the whole screen */
+    background-color: rgba(0, 0, 0, 0.9); /* Slight transparency for a premium feel */
+    z-index: 1000;
+    padding: 20px 0; /* Vertical padding (makes it less 'big') */
+}
+
+.main-nav .logo {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 3px; /* Spread out letters for a modern look */
+    text-transform: uppercase;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px; /* Consistent space between Resume and Contact */
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+.nav-content {
+    max-width: 1200px; /* Adjust this to match the width of your project grid */
+    margin: 0 auto;    /* This centers the container */
+    padding: 0 5%;     /* Space on the sides so it doesn't touch the screen edge */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-spacer {
+    height: 90px; 
+}
+
+/* 3. Hero and Project Titles */
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    padding: 0 8%;
+    color: #ffffff;
+    text-align: center;
+}
+
+.indent-line {
+    display: block;   /* Forces it to behave like a new line */
+    margin-left: 0%; /* Pushes the text toward the middle */
+    color: #888888;   /* Optional: make the second line grey like Iris's site */
+    font-style: italic; /* Optional: adds a nice design touch */
+}
+
+
+.category-tag {
+    color: #aaaaaa; /* Light grey so it doesn't compete with the title */
+}
+
+.project-info h3 {
+    color: #111111;
+    margin-bottom: 5px;
+}
+
+/* 4. The Project Grid (2 Columns) */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two side-by-side */
+    gap: 30px;
+    padding: 0 5% 100px 5%;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Make sure this isn't a huge number like 200px */
+    padding-bottom: 0px;
+}
+
+.project-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 1. The Container */
+.image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+}
+
+/* 2. The Images (Main and Hover) */
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute; /* They need to stack! */
+    top: 0;
+    left: 0;
+    /* This ensures filters like blur are ready to animate */
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.5s ease !important;
+}
+
+/* Hide the hover image initially */
+.img-hover {
+    opacity: 0;
+    z-index: 1;
+}
+
+.img-main {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 3. The Hover Effect - Apply to BOTH at once */
+.image-box:hover img {
+    filter: blur(4px) brightness(0.6) !important;
+    -webkit-filter: blur(4px) brightness(0.6) !important;
+    transform: scale(1.1);
+}
+
+/* Swapping the images during hover */
+.image-box:hover .img-main {
+    opacity: 0;
+}
+.image-box:hover .img-hover {
+    opacity: 1;
+}
+
+/* 4. The Overlay (Text) */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Perfect Centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Text Styling */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Adds space between letters for a premium look */
+    
+    /* Background & Interaction */
+    background: rgba(0, 0, 0, 0.3); /* Subtle dimming */
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 10;
+    
+    transform: translateY(10px);
+}
+
+.image-box:hover .overlay {
+    opacity: 1; /* Note: Changed 90 to 1 (Opacity max is 1) */
+    transform: translateY(0);
+}
+.site-footer {
+    /* 1. Reduce the internal space at the top of the footer */
+    padding: 60px 8% 60px 8%; /* Changed from 120px to 60px */
+    
+    /* 2. Reduce the gap between the project boxes and the footer */
+    margin-top: 20px; /* Changed from 100px to 40px */
+    
+    border-top: 1px solid #222;
+}
+
+.footer-label {
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+}
+
+.footer-name {
+    font-size: 3.5rem; /* Big and bold */
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.footer-tagline {
+    font-size: 1.5rem;
+    color: #bbbbbb;
+    max-width: 500px;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+    border-bottom: 1px solid #ffffff; /* Underline appears on hover */
+}
+
+.footer-bottom {
+    font-size: 0.8rem;
+    color: #555;
+}
